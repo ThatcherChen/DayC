@@ -16,6 +16,7 @@ private:
 public:
     ToDoEntity();
     ToDoEntity(const std::string& content, const std::string& date);
+    ToDoEntity(const ToDoEntity& copyFrom);
     std::string id() const;
     void id(const std::string& id);
     std::string content() const;
@@ -28,8 +29,15 @@ public:
 class ToDoContainer {
 private:
     std::vector<std::unique_ptr<ToDoEntity>> list;
+    std::string filePath;
 public:
+    ToDoContainer();
+    ToDoContainer(const std::string& filePath);
     bool loadFromFile();
+    bool removeEntity(const std::string& id);
+    bool addEntity(const std::string& id, const std::string& content, const std::string& date);
+    bool addEntity(ToDoEntity* entityToAdd);
+    bool saveIntoFile();
 };
 
 #endif //DAYC_TODO_H

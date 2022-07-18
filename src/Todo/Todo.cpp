@@ -18,6 +18,12 @@ ToDoEntity::ToDoEntity(const std::string& content, const std::string& date) {
     _date = date;
 }
 
+ToDoEntity::ToDoEntity(const ToDoEntity &copyFrom) {
+    _id = copyFrom._id;
+    _content = copyFrom._content;
+    _date = copyFrom._date;
+}
+
 std::string ToDoEntity::id() const {
     return _id;
 }
